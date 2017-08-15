@@ -1,8 +1,9 @@
 ﻿{
   "dependencies": {
-    "Zebble": "4.1.286",
-    "Zebble.ListView": "3.17.126",
-    "Zebble.OptionsList": "3.14.111"
+    "Zebble": "4.1.289",
+    "Zebble.ListView": "3.17.127",
+    "Zebble.OptionsList": "3.14.112",
+    "Zebble.SearchInput": "3.18.261"
   },
   "frameworks": {
     "uap10.0": {}
