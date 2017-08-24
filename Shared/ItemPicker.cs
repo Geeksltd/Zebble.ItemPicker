@@ -40,11 +40,7 @@
             set { Source.DataSource = value; SelectedValue = SelectedValue; }
         }
 
-        public bool MultiSelect
-        {
-            get => Source.MultiSelect;
-            set => Source.MultiSelect = value;
-        }
+        public bool MultiSelect { get => Source.MultiSelect; set => Source.MultiSelect = value; }
 
         protected override Zebble.Dialog CreateDialog()
         {
@@ -61,7 +57,10 @@
 
             if (ActualHeight < Label.ActualHeight || ActualHeight > Label.ActualHeight)
             {
-                Height.BindTo(Label.Height, Padding.Top, Padding.Bottom, (h, pt, pb) => h + pt + pb);
+                Height.BindTo(Label.Height, Padding.Top, Padding.Bottom, (h, pt, pb) => h +
+                Math.Max(pt, Border.Top) + Math.Max(pb, Border.Bottom));
+
+                Height.UpdateOn(BorderChanged);
             }
 
             await SelectionChanged.Raise();
