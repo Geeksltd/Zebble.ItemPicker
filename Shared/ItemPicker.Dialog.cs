@@ -70,6 +70,8 @@ namespace Zebble
                 List.List.ItemViews.Where(i => selectedItems.Any(s => s.Value == i.Value))
                     .Do(i => i.IsSelected = true);
 
+                List.List.ItemViews.Do(v => v.SelectedChanged.Handle(() => OnSelectedItemChanged(v)));
+
                 await Waiting.Hide();
             }
 
