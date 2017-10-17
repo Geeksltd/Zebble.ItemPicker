@@ -16,24 +16,25 @@ namespace Zebble
 
             public readonly AsyncEvent Accepted = new AsyncEvent();
 
-            public readonly Button RemoveButton = new Button { Text = "Remove" };
-            public readonly Button CancelButton = new Button { Text = "Cancel" };
-            public readonly Button OkButton = new Button { Text = "OK", CssClass = "primary-button" };
+            public readonly Button RemoveButton = new Button { Text = "Remove", Id = "RemoveButton" };
+            public readonly Button CancelButton = new Button { Text = "Cancel", Id = "CancelButton" };
+            public readonly Button OkButton = new Button { Text = "OK", Id = "OkButton" , CssClass = "primary-button" };
 
             public Dialog(ItemPicker picker)
             {
                 Title.Text("Please select");
                 Picker = picker;
                 List.Source = Picker.Source;
+                ButtonsAtTop = Picker.ButtonsAtTop;
             }
 
             public override async Task OnInitializing()
             {
                 await base.OnInitializing();
 
-                await Content.Add(Stack);
-
                 if (NeedsSearching()) await EnableSearching();
+
+                await Content.Add(Stack);
 
                 List.Set(x => x.SelectedItemChanged.Handle(OnSelectedItemChanged));
                 await Stack.Add(List);
@@ -47,7 +48,7 @@ namespace Zebble
 
             async Task EnableSearching()
             {
-                await Stack.Add(Search.On(x => x.Searched, OnSearched));
+                await AddAfter(Title, Search.On(x => x.Searched, OnSearched));
                 //List.List.LazyLoad = true;
             }
 

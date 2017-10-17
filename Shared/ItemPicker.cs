@@ -11,6 +11,8 @@
         public readonly OptionsDataSource Source = new OptionsDataSource();
         public readonly AsyncEvent<Dialog> DialogOpenning = new AsyncEvent<Dialog>();
 
+        public bool ButtonsAtTop { get; set; } = false;
+
         public bool? Searchable { get; set; }
 
         object FormField.IControl.Value
