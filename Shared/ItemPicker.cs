@@ -15,6 +15,8 @@
 
         public bool? Searchable { get; set; }
 
+        public int SearchCharacterCount { get; set; } = 3;
+
         object FormField.IControl.Value
         {
             get => Source.Value;

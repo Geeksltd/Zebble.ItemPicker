@@ -18,7 +18,7 @@ namespace Zebble
 
             public readonly Button RemoveButton = new Button { Text = "Remove", Id = "RemoveButton" };
             public readonly Button CancelButton = new Button { Text = "Cancel", Id = "CancelButton" };
-            public readonly Button OkButton = new Button { Text = "OK", Id = "OkButton" , CssClass = "primary-button" };
+            public readonly Button OkButton = new Button { Text = "OK", Id = "OkButton", CssClass = "primary-button" };
 
             public Dialog(ItemPicker picker)
             {
@@ -31,6 +31,16 @@ namespace Zebble
             public override async Task OnInitializing()
             {
                 await base.OnInitializing();
+
+                Content.Css.Height = new Length.BindingLengthRequest(lengths: new Length[]
+                {
+                    Root.Height, Title.Height, Search.Height, ButtonsRow.Height,
+                    Padding.Top,Padding.Bottom,Margin.Top,Margin.Bottom,
+                    Title.Margin.Top,Title.Margin.Bottom,
+                    Search.Margin.Top,Search.Margin.Bottom,
+                    ButtonsRow.Margin.Top,ButtonsRow.Margin.Bottom
+                },
+                    expression: l => { return l[0] - l.Except(l[0]).Sum(); });
 
                 if (NeedsSearching()) await EnableSearching();
 
@@ -48,13 +58,13 @@ namespace Zebble
 
             async Task EnableSearching()
             {
-                await AddAfter(Title, Search.On(x => x.Searched, OnSearched));
-                //List.List.LazyLoad = true;
+                await AddAfter(Title, Search.On(x => x.OnSearch, OnSearch));
+                List.List.LazyLoad = true;
             }
 
-            async Task OnSearched()
+            async Task OnSearch()
             {
-                await Waiting.Show();
+                if (Search.Text.Length < Picker.SearchCharacterCount && Search.Text.Length != 0) return;
 
                 var keywords = Search.Text.Split(' ').Trim().ToArray();
 
@@ -72,8 +82,6 @@ namespace Zebble
                     .Do(i => i.IsSelected = true);
 
                 List.List.ItemViews.Do(v => v.SelectedChanged.Handle(() => OnSelectedItemChanged(v)));
-
-                await Waiting.Hide();
             }
 
             bool NeedsSearching()
