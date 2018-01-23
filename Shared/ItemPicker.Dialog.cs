@@ -58,7 +58,7 @@ namespace Zebble
 
             async Task EnableSearching()
             {
-                await AddAfter(Title, Search.On(x => x.OnSearch, OnSearch));
+                await AddAfter(Title, Search.On(x => x.Searching, OnSearch));
                 List.List.LazyLoad = true;
             }
 
