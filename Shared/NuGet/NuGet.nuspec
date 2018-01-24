@@ -10,9 +10,9 @@
     <description>Allows the user to select one or more items from a pre-defined list.</description>
     <authors>Geeks Ltd</authors>
     <dependencies>
-      <dependency id="Zebble.ListView" version="3.17.142" />
-      <dependency id="Zebble.OptionsList" version="3.14.122" />
-      <dependency id="Zebble.SearchInput" version="3.18.265" />
+      <dependency id="Zebble.ListView" version="3.17.143" />
+      <dependency id="Zebble.OptionsList" version="3.14.123" />
+      <dependency id="Zebble.SearchInput" version="3.18.266" />
     </dependencies>
   </metadata>
   <files>
