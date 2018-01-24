@@ -71,15 +71,14 @@ namespace Zebble
                 var selectedItems = List.List.ItemViews.Where(r => r.IsSelected).ToArray();
 
                 var toShow = Picker.Source.Items.Where(i =>
-                 selectedItems.Any(s => s.Value == i.Value)
-                 ||
-                 i.Text.ContainsAll(keywords, caseSensitive: false)).ToArray();
+                 selectedItems.Any(s => s.Value == i.Value)).ToList();
+                toShow.AddRange(Picker.Source.Items.Except(i=> selectedItems.Any(s => s.Value == i.Value)).Where(i => i.Text.ContainsAll(keywords, caseSensitive: false)));
 
                 await List.List.UpdateSource(toShow);
 
                 // Re-select the items
                 List.List.ItemViews.Where(i => selectedItems.Any(s => s.Value == i.Value))
-                    .Do(i => i.IsSelected = true);
+                    .Do(i => i.SelectOption());
 
                 List.List.ItemViews.Do(v => v.SelectedChanged.Handle(() => OnSelectedItemChanged(v)));
             }
