@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Zebble.ItemPicker</id>
-    <version>3.12.153</version>
+    <version>3.12.154</version>
     <title>Item Picker for Zebble (Xamarin)</title>
     <projectUrl>https://github.com/Geeksltd/Zebble.ItemPicker</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Geeksltd/Zebble.ItemPicker/master/Shared/NuGet/Icon.png</iconUrl>
