@@ -42,8 +42,13 @@ namespace Zebble
                 },
                     expression: l => { return l[0] - l.Except(l[0]).Sum(); });
 
-                List.Height.BindTo(another: Content.Height);
-                List.List.Height.BindTo(another: Content.Height);
+                var autoHeightCalculator = List.List as IAutoContentHeightProvider;
+                autoHeightCalculator?.Changed.Handle(() =>
+                {
+                    var height = autoHeightCalculator.Calculate();
+                    List.Height(height);
+                    List.List.Height(height);
+                });
 
                 if (NeedsSearching()) await EnableSearching();
 
@@ -84,9 +89,6 @@ namespace Zebble
                     .Do(i => i.SelectOption());
 
                 List.List.ItemViews.Do(v => v.SelectedChanged.Handle(() => OnSelectedItemChanged(v)));
-
-                List.Height.BindTo(another: Content.Height);
-                List.List.Height.BindTo(another: Content.Height);
             }
 
             bool NeedsSearching()
