@@ -84,6 +84,9 @@ namespace Zebble
                     .Do(i => i.SelectOption());
 
                 List.List.ItemViews.Do(v => v.SelectedChanged.Handle(() => OnSelectedItemChanged(v)));
+
+                List.Height.BindTo(another: Content.Height);
+                List.List.Height.BindTo(another: Content.Height);
             }
 
             bool NeedsSearching()
