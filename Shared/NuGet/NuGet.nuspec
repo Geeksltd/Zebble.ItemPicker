@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Zebble.ItemPicker</id>
-    <version>3.12.156</version>
+    <version>3.12.160</version>
     <title>Item Picker for Zebble (Xamarin)</title>
     <projectUrl>https://github.com/Geeksltd/Zebble.ItemPicker</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Geeksltd/Zebble.ItemPicker/master/Shared/NuGet/Icon.png</iconUrl>
-    <copyright>Copyright © 2018 Geeks Ltd - All rights reserved.</copyright>
+    <copyright>Copyright © 2019 Geeks Ltd - All rights reserved.</copyright>
     <description>Allows the user to select one or more items from a pre-defined list.</description>
     <authors>Geeks Ltd</authors>
     <dependencies>
