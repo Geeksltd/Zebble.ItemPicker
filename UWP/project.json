@@ -1,9 +1,10 @@
 ﻿{
   "dependencies": {
-    "Zebble": "4.4.241",
-    "Zebble.ListView": "4.10.155",
-    "Zebble.OptionsList": "3.14.127",
-    "Zebble.SearchInput": "3.18.272"
+    "Zebble": "4.4.185",
+    "Zebble.CheckBox": "1.22.111",
+    "Zebble.ListView": "3.17.144",
+    "Zebble.OptionsList": "3.14.124",
+    "Zebble.SearchInput": "3.18.267"
   },
   "frameworks": {
     "uap10.0.10240": {}
