@@ -13,8 +13,7 @@
     <AssemblyName>Zebble.ItemPicker.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -44,19 +43,24 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Zebble.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.4.2.364\lib\MonoAndroid10\Zebble.Android.dll</HintPath>
+      <HintPath>..\packages\Zebble.4.4.241\lib\MonoAndroid10\Zebble.Android.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Zebble.CheckBox.Android, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.CheckBox.1.22.109\lib\MonoAndroid10\Zebble.CheckBox.Android.dll</HintPath>
+      <HintPath>..\packages\Zebble.CheckBox.1.22.115\lib\MonoAndroid10\Zebble.CheckBox.Android.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Zebble.ListView.Android, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.ListView.3.17.140\lib\MonoAndroid10\Zebble.ListView.Android.dll</HintPath>
+      <HintPath>..\packages\Zebble.ListView.4.10.155\lib\MonoAndroid10\Zebble.ListView.Android.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Zebble.OptionsList.Android, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.OptionsList.3.14.117\lib\MonoAndroid10\Zebble.OptionsList.Android.dll</HintPath>
+      <HintPath>..\packages\Zebble.OptionsList.3.14.127\lib\MonoAndroid10\Zebble.OptionsList.Android.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Zebble.SearchInput.Android, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.SearchInput.3.18.263\lib\MonoAndroid10\Zebble.SearchInput.Android.dll</HintPath>
+      <HintPath>..\packages\Zebble.SearchInput.3.18.272\lib\MonoAndroid10\Zebble.SearchInput.Android.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
