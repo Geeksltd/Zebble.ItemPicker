@@ -125,4 +125,8 @@
   <Target Name="BeforeBuild">
     <Error Condition="!Exists('..\Shared\Shared.projitems')" Text="This project references Shared that are missing on this computer." />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

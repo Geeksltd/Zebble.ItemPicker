@@ -67,7 +67,6 @@ namespace Zebble
             async Task EnableSearching()
             {
                 await AddAfter(Title, Search.On(x => x.Searching, OnSearch));
-                List.List.LazyLoad = true;
             }
 
             async Task OnSearch()
@@ -80,7 +79,7 @@ namespace Zebble
 
                 var toShow = Picker.Source.Items.Where(i =>
                  selectedItems.Any(s => s.Value == i.Value)).ToList();
-                toShow.AddRange(Picker.Source.Items.Except(i=> selectedItems.Any(s => s.Value == i.Value)).Where(i => i.Text.ContainsAll(keywords, caseSensitive: false)));
+                toShow.AddRange(Picker.Source.Items.Except(i => selectedItems.Any(s => s.Value == i.Value)).Where(i => i.Text.ContainsAll(keywords, caseSensitive: false)));
 
                 await List.List.UpdateSource(toShow);
 
