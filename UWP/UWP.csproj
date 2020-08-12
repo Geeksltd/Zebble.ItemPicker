@@ -1,7 +1,7 @@
 ﻿<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -112,16 +112,16 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Zebble">
-      <Version>4.4.241</Version>
+      <Version>4.5.359</Version>
     </PackageReference>
     <PackageReference Include="Zebble.CheckBox">
-      <Version>1.22.115</Version>
+      <Version>1.22.116</Version>
     </PackageReference>
     <PackageReference Include="Zebble.ListView">
-      <Version>4.10.156</Version>
+      <Version>4.10.168</Version>
     </PackageReference>
     <PackageReference Include="Zebble.OptionsList">
-      <Version>3.14.127</Version>
+      <Version>3.15.127</Version>
     </PackageReference>
     <PackageReference Include="Zebble.SearchInput">
       <Version>3.18.272</Version>

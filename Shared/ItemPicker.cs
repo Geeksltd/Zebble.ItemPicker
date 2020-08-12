@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public partial class ItemPicker : Picker, FormField.IPlaceHolderControl, FormField.IControl
+    public partial class ItemPicker : Picker, FormField.IPlaceHolderControl, FormField.IControl, IBindableInput
     {
         public readonly AsyncEvent SelectionChanged = new AsyncEvent(ConcurrentEventRaisePolicy.Queue);
         public readonly OptionsDataSource Source = new OptionsDataSource();
@@ -76,5 +76,7 @@
             SelectionChanged?.Dispose();
             base.Dispose();
         }
+
+        public void AddBinding(Bindable bindable) => SelectionChanged.Handle(() => bindable.SetUserValue(SelectedValue));
     }
 }
