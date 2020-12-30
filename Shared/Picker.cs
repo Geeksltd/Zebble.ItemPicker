@@ -1,7 +1,7 @@
 namespace Zebble
 {
-    using System;
     using System.Threading.Tasks;
+    using Olive;
 
     public abstract class Picker : Stack
     {
@@ -21,7 +21,7 @@ namespace Zebble
             set
             {
                 Label.Text = value;
-                Label.Style.Ignored = value.LacksValue();
+                Label.Style.Ignored = value.IsEmpty();
                 PlaceholderLabel.Style.Ignored = value.HasValue();
             }
         }

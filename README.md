@@ -1,4 +1,4 @@
-[logo]: https://raw.githubusercontent.com/Geeksltd/Zebble.ItemPicker/master/Shared/NuGet/Icon.png "Zebble.ItemPicker"
+﻿[logo]: https://raw.githubusercontent.com/Geeksltd/Zebble.ItemPicker/master/icon.png "Zebble.ItemPicker"
 
 
 ## Zebble.ItemPicker
