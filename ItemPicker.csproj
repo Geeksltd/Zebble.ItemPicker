@@ -7,7 +7,7 @@
     <RootNamespace>Zebble</RootNamespace>
     <PackageId>Zebble.ItemPicker</PackageId>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Version>3.12.167.0</Version>
+    <Version>3.12.168.0</Version>
     <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <LangVersion>default</LangVersion>
@@ -66,8 +66,8 @@
     <None Remove="Zebble-LicenseAgreement.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Zebble.OptionsList" Version="3.15.138" />
-    <PackageReference Include="Zebble.SearchInput" Version="3.18.278" />
+    <PackageReference Include="Zebble.OptionsList" Version="3.15.139" />
+    <PackageReference Include="Zebble.SearchInput" Version="3.18.279" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Android\" />
