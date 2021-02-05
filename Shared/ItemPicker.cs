@@ -45,6 +45,11 @@
             set { Source.DataSource = value; SelectedValue = SelectedValue; }
         }
 
+        public IBindable BindableSource
+        {
+            set => value.AddBinding(this, nameof(DataSource));
+        }
+
         public bool MultiSelect { get => Source.MultiSelect; set => Source.MultiSelect = value; }
 
         protected override Zebble.Dialog CreateDialog()
