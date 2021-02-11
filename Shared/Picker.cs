@@ -3,8 +3,13 @@ namespace Zebble
     using System.Threading.Tasks;
     using Olive;
 
-    public abstract class Picker : Stack
+    public abstract class Picker : Stack, IBindableInput
     {
+        IBindable SelectedTextBindable;
+        IBinding SelectedTextBinding;
+
+        public readonly AsyncEvent SelectedTextChanged = new AsyncEvent(ConcurrentEventRaisePolicy.Queue);
+
         public readonly TextView Label = new TextView { Id = "Label" }.Ignored();
         public readonly TextView PlaceholderLabel = new TextView { Id = "PlaceholderLabel", Text = "Please select" };
         public readonly ImageView Caret = new ImageView { Id = "Caret" };
@@ -15,14 +20,30 @@ namespace Zebble
 
         public bool AllowNull { get; set; }
 
-        public string SelectedText
+        public object SelectedText
         {
             get => Label.Text;
             set
             {
-                Label.Text = value;
-                Label.Style.Ignored = value.IsEmpty();
-                PlaceholderLabel.Style.Ignored = value.HasValue();
+                if (value is IBindable bindable)
+                {
+                    SelectedTextBinding?.Remove();
+
+                    SelectedTextBindable = bindable;
+                    SelectedTextBinding = bindable.AddBinding(this, nameof(SelectedText));
+                }
+                else
+                {
+                    var @string = value as string;
+
+                    if (@string == Label.Text) return;
+
+                    Label.Text = @string;
+                    Label.Style.Ignored = @string.IsEmpty();
+                    PlaceholderLabel.Style.Ignored = @string.HasValue();
+
+                    SelectedTextChanged.Raise();
+                }
             }
         }
 
@@ -40,5 +61,17 @@ namespace Zebble
         }
 
         protected abstract Dialog CreateDialog();
+
+        public override void Dispose()
+        {
+            SelectedTextChanged?.Dispose();
+            base.Dispose();
+        }
+
+        public virtual void AddBinding(Bindable bindable)
+        {
+            if (bindable == SelectedTextBindable)
+                SelectedTextChanged.Handle(() => bindable.SetUserValue(SelectedText));
+        }
     }
 }

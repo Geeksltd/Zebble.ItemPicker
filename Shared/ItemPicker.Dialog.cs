@@ -36,12 +36,11 @@ namespace Zebble
                 Content.Css.Height = new Length.BindingLengthRequest(lengths: new Length[]
                 {
                     Root.Height, Title.Height, Search.Height, ButtonsRow.Height,
-                    Padding.Top,Padding.Bottom,Margin.Top,Margin.Bottom,
-                    Title.Margin.Top,Title.Margin.Bottom,
-                    Search.Margin.Top,Search.Margin.Bottom,
-                    ButtonsRow.Margin.Top,ButtonsRow.Margin.Bottom
-                },
-                    expression: l => { return l[0] - l.Except(l[0]).Sum(); });
+                    Padding.Top, Padding.Bottom, Margin.Top, Margin.Bottom,
+                    Title.Margin.Top, Title.Margin.Bottom,
+                    Search.Margin.Top, Search.Margin.Bottom,
+                    ButtonsRow.Margin.Top, ButtonsRow.Margin.Bottom
+                }, expression: l => { return l[0] - l.Except(l[0]).Sum(); });
 
                 var autoHeightCalculator = List.List as IAutoContentHeightProvider;
                 autoHeightCalculator?.Changed.Handle(() =>
