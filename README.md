@@ -85,12 +85,12 @@ Searchable property determines user can search or not.  It's recommended to alwa
 <ItemPicker Searchable ="true"   />
 ```
 #### SelectedValue
-By setting SelectedValue, you can determine a default value of ItemPicker. As you know, each item of ItemPicker list has a Value and a Text. You shoud work by Value instead of Text, because it may be duplicate texts of a list.
+By setting the SelectedValue, ItemPicker will find and pre-select an item matching that value. Each item in ItemPicker list is a pair of Value and Text. It's better to distinguish your items using their value, because there might be items with a same text but with different values.
 ```xml
 <ItemPicker SelectedValue="34"   />
 ```
 #### SelectedText
-By setting SelectedText, you can determine a default text of ItemPicker. As you know, each item of ItemPicker list has a Value and a Text. You shoud work by Value instead of Text, because it may be duplicate texts of a list.
+By setting SelectedText, ItemPicker will show the value in its Label. For empty or null values, ItemPicker will shows its Placeholder.
 ```xml
 <ItemPicker   SelectedText="John"  />
 ```
