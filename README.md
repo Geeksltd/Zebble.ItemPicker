@@ -77,10 +77,10 @@ partial class ItemPickerPage
 ```
 
 #### MultiSelect
-If MultiSelect property is set to true, the user can choice one or more items from list. The default value is false that means user can select one item.
+If MultiSelect property is set to true, the user can choose one or more items from list. The default value is false that means user can select one item.
 
 #### Searchable
-Searchable property determines user can search or not.  It recommended that it is always better set it true.
+Searchable property determines user can search or not.  It's recommended to always set it to true.
 ```xml
 <ItemPicker Searchable ="true"   />
 ```
