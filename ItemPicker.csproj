@@ -74,7 +74,4 @@
     <Folder Include="iOS\" />
     <Folder Include="UWP\" />
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /y E:\Projects\Zebble\Plugins\ItemPicker\bin\Debug\uap10.0.18362\*.* E:\Nuget\packages\zebble.itempicker\3.12.170\lib\uap10.0.18362" />
-  </Target>
 </Project>
