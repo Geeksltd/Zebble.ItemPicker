@@ -6,7 +6,7 @@
     <RootNamespace>Zebble</RootNamespace>
     <PackageId>Zebble.ItemPicker</PackageId>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Version>3.12.170.0</Version>
+    <Version>3.12.171.0</Version>
     <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <DefineConstants>$(DefineConstants);</DefineConstants>
@@ -64,7 +64,9 @@
     <None Remove="Zebble-LicenseAgreement.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Zebble.OptionsList" Version="3.15.140" />
+    <PackageReference Include="Olive" Version="2.1.224" />
+    <PackageReference Include="Zebble" Version="4.5.474" />
+    <PackageReference Include="Zebble.OptionsList" Version="3.15.142" />
     <PackageReference Include="Zebble.SearchInput" Version="3.18.280" />
   </ItemGroup>
   <ItemGroup>
@@ -72,4 +74,7 @@
     <Folder Include="iOS\" />
     <Folder Include="UWP\" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /y E:\Projects\Zebble\Plugins\ItemPicker\bin\Debug\uap10.0.18362\*.* E:\Nuget\packages\zebble.itempicker\3.12.170\lib\uap10.0.18362" />
+  </Target>
 </Project>
