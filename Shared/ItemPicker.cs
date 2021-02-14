@@ -10,17 +10,22 @@
     {
         public readonly AsyncEvent<Dialog> DialogOpenning = new AsyncEvent<Dialog>();
 
-        readonly Mvvm.SelectionViewModel<SelectableItem<TSource>> Items = new();
+        readonly Mvvm.CollectionViewModel<SelectableItem<TSource>> Items = new();
+
         public IEnumerable<TSource> Source
         {
             get => Items.Select(v => v.Source.Value);
-            set => Items.Replace(value);
+            set => Items.Replace(value.OrEmpty().ExceptNull());
         }
 
         public IEnumerable<TSource> SelectedItems
         {
             get => Items.Where(v => v.Selected.Value).Select(v => v.Source.Value);
-            set => Items.Do(i => i.Selected.Value = value.OrEmpty().Contains(i.Source.Value));
+            set
+            {
+                Items.Do(i => i.Selected.Value = value.OrEmpty().Contains(i.Source.Value));
+                SetSelectedText(value.OrEmpty().ToString(", "));
+            }
         }
 
         public TSource SelectedItem
@@ -29,17 +34,13 @@
             set => SelectedItems = new[] { value }.ExceptNull();
         }
 
-        public bool MultiSelect
-        {
-            get => Items.MultiSelect;
-            set => Items.MultiSelect = value;
-        }
+        public bool MultiSelect { get; set; }
 
         public bool ButtonsAtTop { get; set; }
 
         public bool? Searchable { get; set; }
 
-        public int SearchCharacterCount { get; set; } = 3;
+        public int SearchCharacterCount { get; set; } = 1;
 
         protected override Zebble.Dialog CreateDialog()
         {
@@ -62,6 +63,12 @@
             }
 
             await Nav.HidePopUp();
+        }
+
+        public override void Dispose()
+        {
+            Items.ClearBindings();
+            base.Dispose();
         }
     }
 }

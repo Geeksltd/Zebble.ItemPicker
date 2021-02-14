@@ -11,12 +11,11 @@ namespace Zebble
         {
             const int AUTO_SEARCH_THRESHOLD = 10;
             ItemPicker<TSource> Picker;
-            Stack Stack = new Stack();
-            public readonly OptionsList<TSource> List = new OptionsList<TSource>();
-            SearchInput Search = new SearchInput();
+            Stack Stack = new();
+            public readonly OptionsList<TSource> List = new();
+            TextInput Search = new();
 
-            public readonly AsyncEvent Accepted = new AsyncEvent();
-
+            public readonly AsyncEvent Accepted = new();
             public readonly Button RemoveButton = new Button { Text = "Remove", Id = "RemoveButton" };
             public readonly Button CancelButton = new Button { Text = "Cancel", Id = "CancelButton" };
             public readonly Button OkButton = new Button { Text = "OK", Id = "OkButton", CssClass = "primary-button" };
@@ -63,10 +62,15 @@ namespace Zebble
                 if (Picker.AllowNull && !Picker.MultiSelect && Picker.SelectedItem != null)
                     await ButtonsRow.Add(RemoveButton.On(x => x.Tapped, RemoveButtonTapped));
 
-                if (Picker.MultiSelect) await ButtonsRow.Add(OkButton.On(x => x.Tapped, Accepted.Raise));
+                if (Picker.MultiSelect) await ButtonsRow.Add(OkButton.On(x => x.Tapped, Complete));
             }
 
-            Task EnableSearching() => AddAfter(Title, Search.On(x => x.Searching, OnSearch));
+            Task EnableSearching()
+            {
+                Search.On(x => x.UserTextChanged, OnSearch);
+                Search.On(x => x.UserTextChanged, OnSearch);
+                return AddAfter(Title, Search);
+            }
 
             void OnSearch()
             {
@@ -91,14 +95,19 @@ namespace Zebble
             {
                 if (List.MultiSelect) return;
                 if (changedProperty != nameof(List.SelectedItem)) return;
-                if (List.SelectedItem != null)
-                    Accepted.Raise();
+                if (List.SelectedItem != null) Complete();
+            }
+
+            void Complete()
+            {
+                Picker.SelectedItems = List.SelectedItems;
+                Accepted.Raise();
             }
 
             void RemoveButtonTapped()
             {
                 List.SelectedItems = null;
-                Accepted.Raise();
+                Complete();
             }
 
             public override void Dispose()
