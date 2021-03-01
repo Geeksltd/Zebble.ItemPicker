@@ -6,7 +6,9 @@
     using Olive;
     using System.Threading.Tasks;
 
-    public partial class ItemPicker<TSource> : Picker
+    public abstract class ItemPicker : Picker { }
+
+    public partial class ItemPicker<TSource> : ItemPicker
     {
         public readonly AsyncEvent<Dialog> DialogOpenning = new AsyncEvent<Dialog>();
 
@@ -42,9 +44,9 @@
 
         public int SearchCharacterCount { get; set; } = 1;
 
-        protected override Zebble.Dialog CreateDialog()
+        protected override Dialog CreateDialog()
         {
-            var result = new Dialog(this).Set(x => x.Accepted.Handle(OnSelectionChanged));
+            var result = new ItemPickerDialog<TSource>(this).Set(x => x.Accepted.Handle(OnSelectionChanged));
             DialogOpenning.Raise(result);
             return result;
         }
