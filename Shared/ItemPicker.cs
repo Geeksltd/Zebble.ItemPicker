@@ -10,7 +10,7 @@
 
     public partial class ItemPicker<TSource> : ItemPicker
     {
-        public readonly AsyncEvent<Dialog> DialogOpenning = new AsyncEvent<Dialog>();
+        public readonly AsyncEvent<Dialog> DialogOpenning = new();
 
         readonly Mvvm.CollectionViewModel<SelectableItem<TSource>> Items = new();
 
